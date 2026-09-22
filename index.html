@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sumly — as finanças da sua casa, somadas em um lugar só</title>
+<meta name="description" content="Organize despesas, cartões, investimentos e dívidas da casa — junto com quem mora com você. Grátis para começar.">
+<meta name="theme-color" content="#0B0E14">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Compartilhamento em redes sociais e WhatsApp -->
+<meta property="og:title" content="Sumly — as finanças da sua casa, somadas">
+<meta property="og:description" content="Organize despesas, cartões, investimentos e dívidas da casa — junto com quem mora com você.">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --bg: #0B0E14; --bg-card: #161C2A; --bg-elevado: #1E2535;
+    --texto: #E8ECF3; --suave: #8B95A5; --borda: #242B3A;
+    --verde: #3DDC97; --verde-escuro: #00B87C; --azul: #5BA0FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--texto);
+    font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---- Topo ---- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,14,20,.86); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borda);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .marca { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; letter-spacing: -.4px; }
+  .marca img { width: 34px; height: 34px; border-radius: 10px; }
+  .nav-links { display: none; gap: 26px; }
+  .nav-links a { color: var(--suave); text-decoration: none; font-size: 14px; font-weight: 600; transition: color .15s; }
+  .nav-links a:hover { color: var(--texto); }
+  @media (min-width: 820px) { .nav-links { display: flex; } }
+
+  .btn {
+    display: inline-block; padding: 11px 22px; border-radius: 11px;
+    font-weight: 700; font-size: 14px; text-decoration: none; border: none; cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-principal {
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde)); color: #062018;
+    box-shadow: 0 3px 14px rgba(61,220,151,.28);
+  }
+  .btn-principal:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(61,220,151,.38); }
+  .btn-secundario { background: var(--bg-card); color: var(--texto); border: 1px solid var(--borda); }
+  .btn-grande { padding: 15px 32px; font-size: 15.5px; border-radius: 13px; }
+
+  /* ---- Hero ---- */
+  .hero { padding: 68px 0 60px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+    width: 680px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,220,151,.16), transparent 68%); pointer-events: none;
+  }
+  .selo {
+    display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700;
+    color: var(--verde); background: rgba(61,220,151,.1); border: 1px solid rgba(61,220,151,.24);
+    padding: 6px 14px; border-radius: 20px; margin-bottom: 22px; position: relative;
+  }
+  .hero h1 {
+    font-size: clamp(31px, 6vw, 52px); line-height: 1.14; letter-spacing: -1.2px;
+    margin-bottom: 18px; position: relative;
+  }
+  .hero h1 em { font-style: normal; color: var(--verde); }
+  .hero p.sub {
+    font-size: clamp(15px, 2.2vw, 18px); color: var(--suave); max-width: 620px;
+    margin: 0 auto 32px; position: relative;
+  }
+  .hero-acoes { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .hero-nota { font-size: 12.5px; color: var(--suave); margin-top: 16px; position: relative; }
+
+  /* ---- Seções ---- */
+  section { padding: 62px 0; }
+  .secao-titulo { text-align: center; margin-bottom: 44px; }
+  .secao-titulo h2 { font-size: clamp(24px, 4vw, 34px); letter-spacing: -.7px; margin-bottom: 11px; }
+  .secao-titulo p { color: var(--suave); font-size: 15px; max-width: 560px; margin: 0 auto; }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+  @media (min-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .card {
+    background: var(--bg-card); border: 1px solid var(--borda); border-radius: 16px;
+    padding: 26px 24px; transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: rgba(61,220,151,.4); transform: translateY(-2px); }
+  .card-ic {
+    width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    background: rgba(61,220,151,.1); color: var(--verde); margin-bottom: 15px;
+  }
+  .card h3 { font-size: 16px; margin-bottom: 8px; letter-spacing: -.2px; }
+  .card p { font-size: 13.8px; color: var(--suave); }
+
+  /* ---- Destaque do diferencial ---- */
+  .destaque {
+    background: linear-gradient(140deg, #143026, #111A28);
+    border: 1px solid rgba(61,220,151,.22); border-radius: 22px;
+    padding: 42px 32px; text-align: center; position: relative; overflow: hidden;
+  }
+  .destaque::after {
+    content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px;
+    border-radius: 50%; background: rgba(61,220,151,.07);
+  }
+  .destaque h2 { font-size: clamp(22px, 3.6vw, 30px); margin-bottom: 14px; letter-spacing: -.6px; position: relative; }
+  .destaque p { color: var(--suave); max-width: 580px; margin: 0 auto; font-size: 15px; position: relative; }
+
+  /* ---- Planos ---- */
+  .planos { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }
+  @media (min-width: 760px) { .planos { grid-template-columns: 1fr 1fr; } }
+  .plano {
+    background: var(--bg-card); border: 1px solid var(--borda); border-radius: 18px; padding: 30px 26px;
+  }
+  .plano.premium { border-color: var(--verde); position: relative; }
+  .plano-tag {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    background: var(--verde); color: #062018; font-size: 11px; font-weight: 800;
+    padding: 4px 14px; border-radius: 12px; letter-spacing: .3px;
+  }
+  .plano h3 { font-size: 17px; margin-bottom: 5px; }
+  .plano .preco { font-size: 33px; font-weight: 800; letter-spacing: -1px; margin: 12px 0 4px; }
+  .plano .preco span { font-size: 14px; font-weight: 600; color: var(--suave); }
+  .plano ul { list-style: none; margin: 20px 0 24px; display: flex; flex-direction: column; gap: 11px; }
+  .plano li { display: flex; gap: 10px; font-size: 14px; align-items: flex-start; }
+  .plano li svg { flex-shrink: 0; margin-top: 3px; color: var(--verde); }
+  .plano .btn { width: 100%; text-align: center; }
+
+  /* ---- Perguntas ---- */
+  .faq { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  details {
+    background: var(--bg-card); border: 1px solid var(--borda); border-radius: 13px; padding: 17px 20px;
+  }
+  details[open] { border-color: rgba(61,220,151,.3); }
+  summary {
+    font-weight: 700; font-size: 14.5px; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: var(--verde); font-size: 21px; font-weight: 400; line-height: 1; }
+  details[open] summary::after { content: '−'; }
+  details p { color: var(--suave); font-size: 14px; margin-top: 12px; }
+
+  /* ---- Chamada final ---- */
+  .final { text-align: center; padding: 70px 0; }
+  .final h2 { font-size: clamp(25px, 4.5vw, 38px); letter-spacing: -.9px; margin-bottom: 14px; }
+  .final p { color: var(--suave); margin-bottom: 28px; font-size: 16px; }
+
+  footer { border-top: 1px solid var(--borda); padding: 30px 0; }
+  .rodape {
+    display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center;
+    font-size: 13px; color: var(--suave);
+  }
+  .rodape-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .rodape a { color: var(--suave); text-decoration: none; }
+  .rodape a:hover { color: var(--verde); }
+  @media (min-width: 700px) { .rodape { flex-direction: row; justify-content: space-between; text-align: left; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="marca"><img src="logo.svg" alt="">Sumly</div>
+    <nav class="nav-links">
+      <a href="#recursos">Recursos</a>
+      <a href="#familia">Em família</a>
+      <a href="#planos">Planos</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="https://app.sumly.com.br" class="btn btn-principal">Entrar</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <span class="selo">Grátis para começar · sem cartão</span>
+    <h1>As finanças da sua casa,<br><em>somadas em um lugar só</em></h1>
+    <p class="sub">
+      Despesas, cartões, investimentos, dívidas e lista de compras — organizados
+      junto com quem mora com você, cada um com o acesso que você definir.
+    </p>
+    <div class="hero-acoes">
+      <a href="https://app.sumly.com.br" class="btn btn-principal btn-grande">Começar agora</a>
+      <a href="#recursos" class="btn btn-secundario btn-grande">Ver como funciona</a>
+    </div>
+    <p class="hero-nota">Funciona no celular e no computador. Nada para instalar.</p>
+  </div>
+</div>
+
+<section id="recursos">
+  <div class="container">
+    <div class="secao-titulo">
+      <h2>Tudo que importa, sem planilha</h2>
+      <p>O Sumly cobre o ciclo inteiro: o que entra, o que sai, o que você deve e o que quer conquistar.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Lançamento em segundos</h3>
+        <p>Digite "Mercado 120" e pronto. O Sumly aprende com o seu histórico e já preenche categoria, banco e forma de pagamento sozinho.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <h3>Cartão do jeito certo</h3>
+        <p>Cada compra cai na fatura correta, respeitando o dia de fechamento. Acompanhe o limite usado de todos os seus cartões.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-3 3 3 5-6"/></svg></div>
+        <h3>Dashboard que explica</h3>
+        <p>Gráficos por categoria, evolução mês a mês e a regra 50/30/20 mostrando se sua renda está bem distribuída.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 7 6 6 4-4 8 8"/><path d="M21 17h-4v-4"/></svg></div>
+        <h3>Dívidas e financiamentos</h3>
+        <p>Veja quanto falta, quanto sairia para quitar hoje e quanto você economizaria antecipando. Com sugestão de por onde começar.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></div>
+        <h3>Investimentos e metas</h3>
+        <p>Aportes, resgates e saldo acumulado por tipo e por corretora, com metas para acompanhar o progresso.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .6h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg></div>
+        <h3>Lista de compras</h3>
+        <p>Planeje o que quer comprar, marque quando comprou e acompanhe quanto já saiu por categoria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="familia">
+  <div class="container">
+    <div class="destaque">
+      <h2>Feito para ser usado a dois</h2>
+      <p>
+        A maioria dos apps trata dinheiro como coisa individual. No Sumly, você cria
+        uma Casa e convida quem mora com você — cada pessoa com permissões próprias:
+        quem pode ver, quem pode lançar, quem só acompanha. As contas da casa deixam
+        de ser responsabilidade de uma pessoa só.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="container">
+    <div class="secao-titulo">
+      <h2>Comece de graça</h2>
+      <p>Use à vontade sozinho. Assine quando quiser compartilhar com sua família.</p>
+    </div>
+
+    <div class="planos">
+      <div class="plano">
+        <h3>Grátis</h3>
+        <div class="preco">R$ 0<span> /mês</span></div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Lançamentos ilimitados</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Dashboard e orçamento completos</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Investimentos e lista de compras</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> 1 cartão e 1 dívida</li>
+        </ul>
+        <a href="https://app.sumly.com.br" class="btn btn-secundario">Criar conta grátis</a>
+      </div>
+
+      <div class="plano premium">
+        <span class="plano-tag">MAIS COMPLETO</span>
+        <h3>Premium</h3>
+        <div class="preco">R$ 14,90<span> /mês</span></div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Tudo do plano grátis</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Convide quantas pessoas quiser</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Cartões e dívidas ilimitados</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Importar extrato do banco (OFX)</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Exportar para Excel e CSV</li>
+        </ul>
+        <a href="https://app.sumly.com.br" class="btn btn-principal">Assinar o Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="container">
+    <div class="secao-titulo">
+      <h2>Perguntas frequentes</h2>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>Preciso conectar minha conta do banco?</summary>
+        <p>Não. O Sumly não pede senha de banco nem acessa suas contas. Você lança
+        o que quiser manualmente, e no plano Premium pode importar o arquivo de
+        extrato que o próprio banco disponibiliza.</p>
+      </details>
+
+      <details>
+        <summary>Quem pode ver meus dados?</summary>
+        <p>Apenas você e as pessoas que você convidar para sua Casa. Nem a equipe do
+        Sumly tem acesso — as regras de segurança do banco de dados impedem isso
+        tecnicamente, não é só uma promessa.</p>
+      </details>
+
+      <details>
+        <summary>Preciso instalar alguma coisa?</summary>
+        <p>Não. O Sumly funciona direto no navegador, no celular e no computador.
+        Se quiser, dá para adicionar à tela inicial do celular e ele se comporta
+        como um aplicativo normal.</p>
+      </details>
+
+      <details>
+        <summary>Posso cancelar quando quiser?</summary>
+        <p>Sim, sem fidelidade nem multa. E você tem 7 dias para desistir com
+        reembolso integral, conforme o Código de Defesa do Consumidor.</p>
+      </details>
+
+      <details>
+        <summary>O que acontece se eu parar de pagar?</summary>
+        <p>Seus dados continuam salvos. Você volta ao plano grátis e só perde acesso
+        aos recursos Premium — nada é apagado.</p>
+      </details>
+
+      <details>
+        <summary>Funciona para quem mora sozinho?</summary>
+        <p>Funciona muito bem. O plano grátis cobre tudo que uma pessoa precisa; o
+        Premium faz mais sentido quando você quer dividir a organização com alguém
+        ou tem vários cartões e dívidas para acompanhar.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="container">
+    <h2>Comece a somar hoje</h2>
+    <p>Leva menos de um minuto para criar sua conta.</p>
+    <a href="https://app.sumly.com.br" class="btn btn-principal btn-grande">Criar minha conta grátis</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container rodape">
+    <div class="marca" style="font-size:16px;"><img src="logo.svg" alt="" style="width:26px;height:26px;">Sumly</div>
+    <div class="rodape-links">
+      <a href="termos.html">Termos de Uso</a>
+      <a href="privacidade.html">Privacidade</a>
+      <a href="https://app.sumly.com.br">Entrar</a>
+    </div>
+    <div>© 2026 Sumly</div>
+  </div>
+</footer>
+
+</body>
+</html>
