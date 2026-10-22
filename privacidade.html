@@ -33,91 +33,142 @@
   <div class="marca"><img src="logo.svg" alt=""><span>Sumly</span></div>
 
   <h1>Política de Privacidade</h1>
-  <p class="atualizado">Última atualização: 23 de setembro de 2026</p>
+  <p class="atualizado">Última atualização: 22 de outubro de 2026</p>
 
   <p>Esta política explica como o Sumly trata seus dados. Escrevemos em linguagem
   direta de propósito — você tem o direito de entender o que acontece com suas
   informações sem precisar de um advogado.</p>
 
   <div class="destaque">
-    <b>O ponto mais importante:</b> seus lançamentos financeiros são seus. Nem a
-    equipe do Sumly consegue acessá-los — as regras de segurança do banco de dados
-    impedem tecnicamente esse acesso, não é apenas uma promessa.
+    <b>O ponto mais importante:</b> seus lançamentos só aparecem para as pessoas que
+    você autoriza na sua Casa. A equipe do Sumly tem acesso técnico ao banco de dados
+    para manutenção e segurança, mas não consulta seus lançamentos, exceto quando
+    você pede ajuda ao suporte ou quando a lei exige.
   </div>
 
-  <h2>1. Contato</h2>
-  <p>Para qualquer assunto sobre seus dados, fale com <a href="mailto:appsumly@gmail.com">appsumly@gmail.com</a>.</p>
+  <h2>1. Responsável e contato</h2>
+  <!-- PREENCHER QUANDO O MEI ESTIVER ABERTO e apagar esta linha e a linha que fecha o comentário:
+  <p>O responsável pelo tratamento dos seus dados (controlador) é <b>[NOME EMPRESARIAL]</b>,
+  CNPJ <b>[00.000.000/0001-00]</b>, com endereço em <b>[RUA, NÚMERO, BAIRRO, CIDADE – UF, CEP]</b>.</p>
+  -->
+  <p>Para qualquer assunto sobre seus dados, fale com
+  <a href="mailto:appsumly@gmail.com">appsumly@gmail.com</a>. Este e-mail é o nosso
+  canal de comunicação com titulares de dados e com a Autoridade Nacional de
+  Proteção de Dados (ANPD).</p>
 
-  <h2>2. Quais dados coletamos</h2>
+  <h2>2. Quais dados tratamos</h2>
   <table>
     <tr><th>Dado</th><th>Para quê</th><th>Base legal (LGPD)</th></tr>
     <tr><td>E-mail e senha</td><td>Criar e acessar sua conta</td><td>Execução de contrato</td></tr>
-    <tr><td>Nome, telefone, data de nascimento, sexo</td><td>Personalizar sua experiência</td><td>Consentimento</td></tr>
+    <tr><td>Nome</td><td>Identificar você no app e nas Casas de que participa (aparece para os membros e no histórico)</td><td>Execução de contrato</td></tr>
+    <tr><td>Telefone (opcional)</td><td>Contato do suporte, se você quiser</td><td>Consentimento</td></tr>
     <tr><td>Foto de perfil (opcional)</td><td>Identificação visual na sua Casa</td><td>Consentimento</td></tr>
-    <tr><td>Lançamentos financeiros</td><td>Funcionamento do app</td><td>Execução de contrato</td></tr>
-    <tr><td>E-mail de assinatura</td><td>Liberar o plano Premium</td><td>Execução de contrato</td></tr>
+    <tr><td>Lançamentos financeiros (despesas, receitas, investimentos, dívidas, compras)</td><td>Funcionamento do app</td><td>Execução de contrato</td></tr>
+    <tr><td>Imagens de comprovantes (opcional)</td><td>Guardar o comprovante junto da despesa</td><td>Execução de contrato</td></tr>
+    <tr><td>Histórico da Casa (quem fez o quê e quando)</td><td>Mostrar aos membros as alterações feitas na Casa</td><td>Execução de contrato</td></tr>
+    <tr><td>E-mail de quem você convida</td><td>Entregar e mostrar o convite</td><td>Legítimo interesse</td></tr>
+    <tr><td>Dados da assinatura (e-mail, plano, validade, valor e número do pagamento)</td><td>Liberar o Premium e cumprir obrigações fiscais e de consumo</td><td>Execução de contrato e obrigação legal</td></tr>
+    <tr><td>Dados técnicos de acesso (endereço IP, navegador, aparelho), registrados pelos serviços que usamos</td><td>Segurança e prevenção de abuso</td><td>Legítimo interesse</td></tr>
   </table>
 
-  <p><b>Não coletamos</b> dados bancários, números de cartão, CPF ou qualquer
-  credencial de acesso a instituições financeiras. Os valores que aparecem no app
-  são apenas os que você digita ou importa por arquivo.</p>
+  <p><b>Não pedimos</b> dados bancários, números de cartão, CPF ou senhas de banco.
+  Os valores que aparecem no app são os que você digita ou importa por arquivo.
+  Atenção: comprovantes que você anexar podem conter dados como nome, banco e parte
+  do CPF — e ficam visíveis para quem pode ver as finanças da Casa.</p>
+
+  <p>Não pedimos mais sexo nem data de nascimento. Se você tinha informado esses
+  dados, eles são apagados no seu próximo acesso. Não usamos seus dados para
+  publicidade nem para decisões automatizadas sobre você.</p>
 
   <h2>3. Como protegemos</h2>
   <ul>
     <li>Todo o tráfego é criptografado (HTTPS).</li>
-    <li>Senhas nunca são armazenadas por nós — a autenticação é feita pelo Firebase Authentication (Google), que guarda apenas versões criptografadas.</li>
-    <li>As regras do banco de dados garantem que cada pessoa só acesse os dados da própria Casa.</li>
+    <li>Senhas nunca são armazenadas por nós — a autenticação é feita pelo Firebase Authentication (Google).</li>
+    <li>As regras do banco de dados garantem que cada pessoa só acesse as Casas de que participa, e apenas o que as permissões dela permitem.</li>
     <li>Pagamentos são processados inteiramente pelo Mercado Pago. Não vemos nem guardamos dados do seu cartão.</li>
-    <li>Após três tentativas de senha incorretas, o acesso é temporariamente bloqueado.</li>
+    <li>Limitamos tentativas seguidas de login e usamos verificação de segurança para dificultar acessos automatizados.</li>
   </ul>
 
-  <h2>4. Compartilhamento com terceiros</h2>
-  <p>Usamos serviços de infraestrutura que processam dados em nosso nome:</p>
+  <h2>4. Com quem compartilhamos</h2>
+  <p>Usamos serviços que processam dados em nosso nome, só para o app funcionar:</p>
   <ul>
-    <li><b>Google Firebase</b> — autenticação e armazenamento dos dados</li>
-    <li><b>Mercado Pago</b> — processamento de pagamentos</li>
+    <li><b>Google Firebase</b> — login (inclusive com conta Google), armazenamento dos dados e envio dos e-mails de confirmação de conta e de redefinição de senha</li>
     <li><b>Vercel</b> — processamento das confirmações de pagamento</li>
-    <li><b>Resend</b> — envio dos e-mails de confirmação de conta e de redefinição de senha</li>
+    <li><b>GitHub Pages</b> e <b>jsDelivr</b> — hospedagem do site e entrega dos arquivos do app (recebem dados técnicos de acesso)</li>
     <li><b>Google reCAPTCHA</b> — verificação de segurança que confirma que o acesso vem do app oficial, e não de programas automatizados</li>
+    <!-- Quando os e-mails passarem a sair pelo servidor do Sumly, troque "envio dos e-mails..." do Firebase por esta linha:
+    <li><b>Resend</b> — envio dos e-mails de confirmação de conta e de redefinição de senha</li>
+    -->
   </ul>
-  <p>Não vendemos, alugamos ou cedemos seus dados para fins publicitários.</p>
+  <p>O <b>Mercado Pago</b> processa os pagamentos e trata os dados de pagamento como
+  responsável próprio, conforme a política de privacidade dele. Nós recebemos apenas
+  a confirmação: e-mail, plano, valor e número do pagamento.</p>
+  <p>Também podemos compartilhar dados quando a lei ou uma ordem de autoridade
+  competente exigir. Não vendemos, alugamos ou cedemos seus dados para fins
+  publicitários.</p>
 
-  <h2>5. Compartilhamento dentro da sua Casa</h2>
+  <h2>5. Dados fora do Brasil</h2>
+  <p>Alguns desses serviços guardam ou processam dados fora do Brasil, principalmente
+  nos Estados Unidos (Google, Vercel, GitHub e jsDelivr). Quando isso acontece, a
+  transferência segue a LGPD e as regras da ANPD sobre transferência internacional
+  de dados.</p>
+  <!-- CONFERIR no console do Firebase a região do banco de dados (Firestore).
+       Se for southamerica-east1 (São Paulo), acrescente ao parágrafo acima:
+       "Seus lançamentos ficam guardados em servidores no Brasil." -->
+
+  <h2>6. Compartilhamento dentro da sua Casa</h2>
   <p>Ao convidar alguém para sua Casa, essa pessoa passa a ver os lançamentos
-  daquela Casa conforme as permissões que você escolher. Você controla quem entra,
-  o que cada um vê, e pode remover qualquer membro a qualquer momento.</p>
+  daquela Casa conforme as permissões que você escolher, além do nome, da foto (se
+  houver) e do histórico de quem participa. Você controla quem entra, o que cada um
+  vê, e pode remover qualquer membro a qualquer momento.</p>
 
-  <h2>6. Por quanto tempo guardamos</h2>
-  <p>Seus dados ficam armazenados enquanto sua conta existir. Ao excluir uma Casa,
-  todos os lançamentos dela são apagados permanentemente. Registros de pagamento
-  podem ser mantidos pelo prazo exigido pela legislação fiscal.</p>
-
-  <h2>7. Seus direitos</h2>
-  <p>Pela LGPD (Lei 13.709/2018), você pode a qualquer momento:</p>
+  <h2>7. Por quanto tempo guardamos</h2>
   <ul>
-    <li>Saber quais dados temos sobre você</li>
+    <li>Seus dados ficam guardados enquanto sua conta existir.</li>
+    <li>Itens que você exclui ficam 30 dias na lixeira da Casa e depois são apagados.</li>
+    <li>Ao excluir uma Casa, tudo nela é apagado permanentemente: lançamentos, comprovantes, lixeira e histórico.</li>
+    <li>Ao excluir sua conta, apagamos seu perfil, seu login e todas as Casas que você criou. Nas Casas de outras pessoas, o que você lançou continua (pertence à Casa) e seu nome e e-mail podem continuar no histórico dela até o dono excluir a Casa.</li>
+    <li>Os dados da assinatura são guardados pelo prazo exigido pela legislação fiscal e de defesa do consumidor, mesmo depois da exclusão da conta.</li>
+  </ul>
+
+  <h2>8. Seus direitos</h2>
+  <p>Pela LGPD (Lei 13.709/2018, art. 18), você pode a qualquer momento:</p>
+  <ul>
+    <li>Confirmar se tratamos seus dados e ter acesso a eles</li>
     <li>Corrigir dados incompletos ou desatualizados — direto em Ajustes → Perfil</li>
-    <li>Exportar seus dados em formato aberto (Excel/CSV) — em Ajustes → Importações</li>
-    <li>Excluir sua conta e todos os dados associados</li>
-    <li>Revogar consentimentos dados anteriormente</li>
+    <li>Pedir anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei</li>
+    <li>Receber seus dados em formato aberto (portabilidade): no Premium, exporte em Excel/CSV em Ajustes → Dados; em qualquer plano, peça uma cópia completa pelo e-mail, sem custo</li>
+    <li>Saber com quais serviços compartilhamos seus dados (veja a seção 4)</li>
+    <li>Saber que pode não informar os dados opcionais (telefone e foto) — sem eles, o app funciona normalmente</li>
+    <li>Revogar o consentimento e pedir a eliminação dos dados tratados com base nele</li>
+    <li>Se opor a um tratamento feito com base em legítimo interesse</li>
+    <li>Excluir sua conta, direto no app</li>
+    <li>Reclamar à ANPD (<a href="https://www.gov.br/anpd">gov.br/anpd</a>)</li>
   </ul>
   <p>Para exercer qualquer um desses direitos, escreva para
-  <a href="mailto:appsumly@gmail.com">appsumly@gmail.com</a>. Respondemos em até 15 dias.</p>
+  <a href="mailto:appsumly@gmail.com">appsumly@gmail.com</a> a partir do e-mail da
+  sua conta. Respondemos em até 15 dias, sem custo.</p>
 
-  <h2>8. Cookies e armazenamento local</h2>
+  <h2>9. Cookies e armazenamento local</h2>
   <p>O Sumly guarda informações no seu navegador apenas para funcionar: manter você
-  logado, lembrar sua preferência de tema e permitir o uso offline. Não usamos
-  cookies de rastreamento nem de publicidade. A verificação de segurança (Google
-  reCAPTCHA) analisa sinais do navegador para diferenciar pessoas de programas
-  automatizados e pode usar cookies próprios para isso.</p>
+  logado, lembrar suas preferências (como o tema) e permitir o uso offline — o que
+  inclui uma cópia dos lançamentos das suas Casas. Ao sair da conta pelo app, essa
+  cópia é apagada do navegador (se o app estiver aberto em outra aba, feche-a antes).
+  Não usamos cookies de rastreamento nem de publicidade. A verificação de segurança
+  (Google reCAPTCHA) analisa sinais do navegador para diferenciar pessoas de
+  programas automatizados e pode usar cookies próprios para isso.</p>
 
-  <h2>9. Menores de idade</h2>
+  <h2>10. Incidentes de segurança</h2>
+  <p>Se acontecer um incidente de segurança que possa causar risco ou dano relevante
+  a você, avisaremos você e a ANPD, como determina a LGPD.</p>
+
+  <h2>11. Menores de idade</h2>
   <p>O Sumly não é destinado a menores de 18 anos e não coletamos intencionalmente
   dados de crianças e adolescentes.</p>
 
-  <h2>10. Mudanças nesta política</h2>
+  <h2>12. Mudanças nesta política</h2>
   <p>Se algo relevante mudar, avisaremos dentro do app antes da alteração entrar
-  em vigor.</p>
+  em vigor e pediremos que você confirme a nova versão.</p>
 
   <footer>
     Sumly — <a href="termos.html">Termos de Uso</a> · <a href="https://app.sumly.com.br">Voltar ao app</a>
